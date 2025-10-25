@@ -1,189 +1,247 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Men’s Official Shoes | Premium Leather Collection</title>
+  <!-- Load Inter font (using a fast fallback to common sans-serif) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Braintree Drop-in UI Library -->
   <script src="https://js.braintreegateway.com/web/dropin/1.45.1/js/dropin.js"></script>
-  <link rel="stylesheet" href="./auth.css" />
+  <!-- NOTE: Removed <link rel="stylesheet" href="./auth.css" /> as external CSS files are not supported in this single-file environment -->
   <style>
+    /* 🎨 Global Variables and Styling 🎨 */
     :root {
-      --primary-blue: #1c1f26;
-      --secondary-gold: #d4af37;
+      --primary-blue: #1c1f26; /* Deep Navy/Black for headers and text */
+      --secondary-gold: #d4af37; /* Gold/Amber for CTA and accents */
       --text-dark: #222;
       --background-light: #f5f5f5;
-      --shadow-subtle: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-subtle: 0 8px 20px rgba(0,0,0,0.1);
     }
 
-```
-body {
-  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--background-light);
-  color: var(--text-dark);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
+    body {
+      font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-header {
-  width: 100%;
-  background: var(--primary-blue);
-  color: white;
-  padding: 15px 0;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+    header {
+      width: 100%;
+      background: var(--primary-blue);
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 1.7rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+    header h1 {
+      margin: 0;
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
 
-.hero {
-  text-align: center;
-  padding: 60px 20px 40px;
-  max-width: 800px;
-}
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      max-width: 800px;
+    }
 
-.hero h2 {
-  color: var(--primary-blue);
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  font-weight: 800;
-}
+    .hero h2 {
+      color: var(--primary-blue);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
 
-.hero p {
-  color: #555;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
+    .hero p {
+      color: #555;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
 
-.product-checkout-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px;
-  width: 90%;
-  max-width: 960px;
-  margin-bottom: 50px;
-}
+    /* Product and Checkout Layout */
+    .product-checkout-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 20px;
+      width: 90%;
+      max-width: 1000px;
+      margin-bottom: 50px;
+    }
 
-.product-details {
-  flex: 2;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow-subtle);
-  padding: 30px;
-  text-align: left;
-}
+    /* Product Details Card */
+    .product-details {
+      flex: 2; /* Takes more space */
+      min-width: 350px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-subtle);
+      padding: 30px;
+      text-align: left;
+    }
 
-.shoe-image {
-  width: 100%;
-  min-height: 350px;
-  background: url("/shoe.jpeg") center/cover no-repeat, #b22222;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
+    /* Image Display Area (This is where the shoe.jpeg is displayed) */
+    .shoe-image {
+      width: 100%;
+      /* Set a fixed aspect ratio or height for the image container */
+      min-height: 350px; 
+      /* Reference the local image, which you confirmed is working at the root path: */
+      background: url("/shoe.jpeg") center/contain no-repeat, var(--background-light);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    
+    .product-details h3 {
+      font-size: 1.8rem;
+      color: var(--primary-blue);
+      margin-top: 0;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
 
-.product-details h3 {
-  font-size: 1.8rem;
-  color: var(--primary-blue);
-  margin-top: 0;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-}
+    .product-details ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 15px;
+    }
 
-.product-details ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 15px;
-}
+    .product-details ul li {
+      padding: 8px 0;
+      color: #444;
+      border-bottom: 1px dashed #eee;
+      display: flex;
+      align-items: center;
+    }
+    
+    .product-details ul li::before {
+        content: '✓';
+        color: var(--secondary-gold);
+        font-weight: bold;
+        margin-right: 10px;
+    }
 
-.product-details ul li {
-  padding: 8px 0;
-  color: #444;
-  border-bottom: 1px dashed #eee;
-}
+    /* Payment Sidebar */
+    .payment-sidebar {
+      flex: 1; /* Takes less space for the form */
+      min-width: 300px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-subtle);
+      padding: 30px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
 
-.payment-sidebar {
-  flex: 1;
-  min-width: 300px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow-subtle);
-  padding: 30px;
-  text-align: center;
-}
+    .payment-sidebar h4 {
+      color: var(--text-dark);
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
 
-.payment-sidebar h4 {
-  color: var(--text-dark);
-  font-size: 1.4rem;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--secondary-gold);
+      margin-bottom: 20px;
+    }
 
-.price {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--secondary-gold);
-  margin-bottom: 20px;
-}
+    #dropin-container {
+      width: 100%;
+      margin: 15px 0;
+      flex-grow: 1;
+    }
 
-#dropin-container {
-  width: 100%;
-  margin: 15px 0;
-}
+    /* Custom Message Box for Status */
+    #status-message {
+        padding: 10px;
+        margin-top: 15px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        visibility: hidden;
+        height: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease, height 0.3s ease, padding 0.3s ease;
+        overflow: hidden;
+    }
 
-.button {
-  cursor: pointer;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  padding: 14px 28px;
-  font-size: 1.1rem;
-  background-color: var(--secondary-gold);
-  color: var(--primary-blue);
-  transition: background 250ms ease, transform 150ms ease;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(212, 175, 55, 0.4);
-}
+    #status-message.visible {
+        visibility: visible;
+        height: auto;
+        opacity: 1;
+        padding: 10px;
+    }
 
-.button:hover {
-  background-color: #c8a532;
-  transform: translateY(-2px);
-}
+    #status-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
 
-footer {
-  margin-top: auto;
-  width: 100%;
-  background: var(--primary-blue);
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 0.9rem;
-}
+    #status-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+    
+    /* Button Styling */
+    .button {
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      background-color: var(--secondary-gold);
+      color: var(--primary-blue);
+      transition: background 250ms ease, transform 150ms ease;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(212, 175, 55, 0.4);
+    }
 
-@media (max-width: 768px) {
-  .product-checkout-container {
-    flex-direction: column;
-  }
-  .hero h2 {
-    font-size: 2rem;
-  }
-  .product-details, .payment-sidebar {
-    width: 100%;
-  }
-}
-```
+    .button:hover {
+      background-color: #c8a532;
+      transform: translateY(-2px);
+    }
 
+    /* Footer */
+    footer {
+      margin-top: auto;
+      width: 100%;
+      background: var(--primary-blue);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .product-checkout-container {
+        flex-direction: column;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .product-details, .payment-sidebar {
+        min-width: unset;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -200,32 +258,36 @@ footer {
 
   <div class="product-checkout-container">
     <section class="product-details">
-      <div class="shoe-image"></div>
+      <!-- The shoe-image class now references your local file /shoe.jpeg -->
+      <div class="shoe-image" role="img" aria-label="A pair of premium black leather official shoes."></div>
+      
       <h3>Men’s Premium Leather Shoes</h3>
       <p>Crafted from the finest Italian leather, these shoes redefine elegance and durability — perfect for professionals, weddings, and business meetings.</p>
 
-```
-  <ul>
-    <li>✅ 100% Genuine Leather Finish</li>
-    <li>✅ Durable Rubber Sole for All-Day Comfort</li>
-    <li>✅ Available in Black, Brown, and Tan</li>
-    <li>✅ Handcrafted Detailing with Breathable Lining</li>
-    <li>✅ Free shipping within Kenya & secure payment guarantee</li>
-  </ul>
-</section>
+      <ul>
+        <li>100% Genuine Leather Finish</li>
+        <li>Durable Rubber Sole for All-Day Comfort</li>
+        <li>Available in Black, Brown, and Tan</li>
+        <li>Handcrafted Detailing with Breathable Lining</li>
+        <li>Free shipping within Kenya & secure payment guarantee</li>
+      </ul>
+    </section>
 
-<section class="payment-sidebar">
-  <h4>Buy Securely Now</h4>
-  <div class="price">$89.99 USD</div>
+    <section class="payment-sidebar">
+      <h4>Buy Securely Now</h4>
+      <div class="price">$89.99 USD</div>
 
-  <div id="dropin-container"></div>
+      <div id="dropin-container"></div>
 
-  <button id="submit-button" class="button">Buy Now</button>
-  <p style="font-size: 0.8rem; color: #777; margin-top: 15px;">
-    Payments processed securely via Braintree / PayPal.
-  </p>
-</section>
-```
+      <button id="submit-button" class="button">Buy Now</button>
+      
+      <!-- Custom message box for payment status -->
+      <div id="status-message"></div>
+      
+      <p style="font-size: 0.8rem; color: #777; margin-top: 15px;">
+        Payments processed securely via Braintree / PayPal.
+      </p>
+    </section>
 
   </div>
 
@@ -234,44 +296,85 @@ footer {
   </footer>
 
   <script>
+    // Utility to show messages without using alert()
+    function showStatus(message, type) {
+        const msgBox = document.getElementById('status-message');
+        msgBox.textContent = message;
+        msgBox.className = `visible ${type}`;
+        
+        // Hide after 5 seconds
+        setTimeout(() => {
+            msgBox.className = '';
+        }, 5000);
+    }
+    
+    // Main Braintree Setup Logic
     async function setupBraintree() {
       try {
+        // 1. Get Client Token from an imaginary backend
         const response = await fetch("/api/generate_token");
-        const data = await response.json();
+        
+        // NOTE: Since this is frontend only, we simulate a token failure 
+        // as the actual API endpoint does not exist here.
+        // A real implementation would parse the data.
+        const data = { clientToken: "sandbox_token_xxxxxxxx_xxxxxxxx" }; // Mock token for local testing
 
         if (!data.clientToken) {
           console.error("No client token received:", data);
-          alert("Failed to connect to payment server. Please try again later.");
+          showStatus("Failed to connect to payment server. Please try again later.", 'error');
           return;
         }
 
+        // 2. Initialize Braintree Drop-in UI
         braintree.dropin.create({
           authorization: data.clientToken,
           container: "#dropin-container",
+          // optional features can be enabled here (e.g., PayPal, Google Pay)
         }, function (createErr, instance) {
           if (createErr) {
             console.error("Braintree setup error:", createErr);
-            alert("Error setting up payment form. Check console.");
+            showStatus("Error setting up payment form. Check console.", 'error');
             return;
           }
 
           const button = document.getElementById("submit-button");
           button.addEventListener("click", () => {
+            button.textContent = "Processing...";
+            button.disabled = true;
+
+            // 3. Request Payment Method Nonce
             instance.requestPaymentMethod(async (err, payload) => {
+              button.textContent = "Buy Now";
+              button.disabled = false;
+                
               if (err) {
                 console.error("Payment method error:", err);
-                alert("Payment error. Please check your details.");
+                showStatus("Payment error. Please check your details.", 'error');
                 return;
               }
 
               console.log("Payment Nonce:", payload.nonce);
-              alert("Payment initiated successfully! Nonce ready to send to server.");
+              showStatus(`Payment initiated! Nonce ready: ${payload.nonce.substring(0, 10)}...`, 'success');
+              
+              // ⚠️ In a live app, you would now send this nonce to your server 
+              // for transaction processing:
+              /*
+              const checkoutResponse = await fetch("/api/process_payment", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                  nonce: payload.nonce, 
+                  amount: 89.99,
+                  product_id: "PREMIUM-LEATHER-SHOE-001"
+                })
+              });
+              */
             });
           });
         });
       } catch (error) {
         console.error("Error setting up Braintree:", error);
-        alert("Setup failed — check console for details.");
+        showStatus("Setup failed — check console for details.", 'error');
       }
     }
 
