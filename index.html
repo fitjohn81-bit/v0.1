@@ -87,7 +87,7 @@ header h1 {
 .shoe-image {
   width: 100%;
   min-height: 350px;
-  background: url('https://images.unsplash.com/photo-1600185365926-3a2ce00f1d95?auto=format&fit=crop&w=800&q=60') center/cover;
+  background: url("/shoe.jpeg") center/cover no-repeat, #b22222;
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -186,6 +186,7 @@ footer {
 
   </style>
 </head>
+
 <body>
   <header>
     <h1>EliteSteps — Official Men’s Shoes</h1>
@@ -193,7 +194,7 @@ footer {
 
   <section class="hero">
     <h2>Step Into Confidence</h2>
-    <p>Welcome to <strong>EliteSteps</strong>, where craftsmanship meets comfort.  
+    <p>Welcome to <strong>EliteSteps</strong>, where craftsmanship meets comfort.<br>
        Explore our premium collection of <em>official leather shoes</em> designed for style, durability, and excellence in every step.</p>
   </section>
 
@@ -219,11 +220,10 @@ footer {
 
   <div id="dropin-container"></div>
 
-  <button id="submit-button" class="button">
-    Buy Now
-  </button>
-
-  <p style="font-size: 0.8rem; color: #777; margin-top: 15px;">Payments processed securely via Braintree / PayPal.</p>
+  <button id="submit-button" class="button">Buy Now</button>
+  <p style="font-size: 0.8rem; color: #777; margin-top: 15px;">
+    Payments processed securely via Braintree / PayPal.
+  </p>
 </section>
 ```
 
@@ -238,6 +238,7 @@ footer {
       try {
         const response = await fetch("/api/generate_token");
         const data = await response.json();
+
         if (!data.clientToken) {
           console.error("No client token received:", data);
           alert("Failed to connect to payment server. Please try again later.");
@@ -265,18 +266,6 @@ footer {
 
               console.log("Payment Nonce:", payload.nonce);
               alert("Payment initiated successfully! Nonce ready to send to server.");
-              
-              /* Example server call:
-              const checkoutResponse = await fetch("/api/process_payment", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  nonce: payload.nonce,
-                  amount: 89.99,
-                  product_id: "MEN-LEATHER-SHOE-001"
-                })
-              });
-              */
             });
           });
         });
@@ -285,6 +274,7 @@ footer {
         alert("Setup failed — check console for details.");
       }
     }
+
     setupBraintree();
   </script>
 
