@@ -92,11 +92,17 @@
     .shoe-image {
       width: 100%;
       min-height: 350px; 
-      /* DIRECTLY USING THE LOCAL PATH AS REQUESTED */
-      background: url('/shoe.jpeg') center/cover no-repeat;
+      /* DIRECTLY USING A RELIABLE EXTERNAL URL FOR VISIBILITY ON GITHUB PAGES */
+      background: url('https://images.unsplash.com/photo-1594944917544-774b77f8045a?w=800&auto=format&fit=crop&q=60') center/cover no-repeat;
       border-radius: 8px;
       margin-bottom: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      /* Removed previous placeholder text styles that you may have added */
+      display: block; 
+      text-align: none;
+      color: transparent;
+      line-height: 350px; 
+      font-size: 0;
     }
     
     .product-details h3 {
