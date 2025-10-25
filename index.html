@@ -96,8 +96,8 @@
       width: 100%;
       /* Set a fixed aspect ratio or height for the image container */
       min-height: 350px; 
-      /* Reference the local image, which you confirmed is working at the root path: */
-      background: url("/shoe.jpeg") center/contain no-repeat, var(--background-light);
+      /* *** UPDATED: Using a high-quality external URL for a vivid preview *** */
+      background: url('https://images.unsplash.com/photo-1595341888049-bf2f07d2f9d8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat, #e0e0e0; /* Fallback to light grey */
       border-radius: 8px;
       margin-bottom: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -258,7 +258,7 @@
 
   <div class="product-checkout-container">
     <section class="product-details">
-      <!-- The shoe-image class now references your local file /shoe.jpeg -->
+      <!-- The shoe-image class now references a high-quality external URL -->
       <div class="shoe-image" role="img" aria-label="A pair of premium black leather official shoes."></div>
       
       <h3>Men’s Premium Leather Shoes</h3>
