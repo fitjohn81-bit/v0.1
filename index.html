@@ -6,9 +6,6 @@
   <title>Men’s Official Shoes | Premium Leather Collection</title>
   <!-- Load Inter font (using a fast fallback to common sans-serif) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <!-- Braintree Drop-in UI Library -->
-  <script src="https://js.braintreegateway.com/web/dropin/1.45.1/js/dropin.js"></script>
-  <!-- NOTE: Removed <link rel="stylesheet" href="./auth.css" /> as external CSS files are not supported in this single-file environment -->
   <style>
     /* 🎨 Global Variables and Styling 🎨 */
     :root {
@@ -91,13 +88,12 @@
       text-align: left;
     }
 
-    /* Image Display Area (This is where the shoe.jpeg is displayed) */
+    /* Image Display Area - NOW USING EXTERNAL URL */
     .shoe-image {
       width: 100%;
-      /* Set a fixed aspect ratio or height for the image container */
       min-height: 350px; 
-      /* *** UPDATED: Using a high-quality external URL for a vivid preview *** */
-      background: url('https://images.unsplash.com/photo-1595341888049-bf2f07d2f9d8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat, #e0e0e0; /* Fallback to light grey */
+      /* Using a reliable, high-res external URL from Unsplash */
+      background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=60') center/cover no-repeat;
       border-radius: 8px;
       margin-bottom: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -143,6 +139,7 @@
       text-align: center;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start; /* Align content to the top */
     }
 
     .payment-sidebar h4 {
@@ -156,46 +153,7 @@
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--secondary-gold);
-      margin-bottom: 20px;
-    }
-
-    #dropin-container {
-      width: 100%;
-      margin: 15px 0;
-      flex-grow: 1;
-    }
-
-    /* Custom Message Box for Status */
-    #status-message {
-        padding: 10px;
-        margin-top: 15px;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        visibility: hidden;
-        height: 0;
-        opacity: 0;
-        transition: opacity 0.3s ease, height 0.3s ease, padding 0.3s ease;
-        overflow: hidden;
-    }
-
-    #status-message.visible {
-        visibility: visible;
-        height: auto;
-        opacity: 1;
-        padding: 10px;
-    }
-
-    #status-message.success {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-    }
-
-    #status-message.error {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
+      margin-bottom: 30px; /* Increased margin for spacing */
     }
     
     /* Button Styling */
@@ -258,7 +216,7 @@
 
   <div class="product-checkout-container">
     <section class="product-details">
-      <!-- The shoe-image class now references a high-quality external URL -->
+      <!-- The shoe-image class now uses a reliable external image URL -->
       <div class="shoe-image" role="img" aria-label="A pair of premium black leather official shoes."></div>
       
       <h3>Men’s Premium Leather Shoes</h3>
@@ -277,16 +235,7 @@
       <h4>Buy Securely Now</h4>
       <div class="price">$89.99 USD</div>
 
-      <div id="dropin-container"></div>
-
       <button id="submit-button" class="button">Buy Now</button>
-      
-      <!-- Custom message box for payment status -->
-      <div id="status-message"></div>
-      
-      <p style="font-size: 0.8rem; color: #777; margin-top: 15px;">
-        Payments processed securely via Braintree / PayPal.
-      </p>
     </section>
 
   </div>
@@ -296,89 +245,27 @@
   </footer>
 
   <script>
-    // Utility to show messages without using alert()
-    function showStatus(message, type) {
-        const msgBox = document.getElementById('status-message');
-        msgBox.textContent = message;
-        msgBox.className = `visible ${type}`;
+    // Simple purchase button handler
+    document.getElementById('submit-button').addEventListener('click', function() {
+      // Simulate a successful purchase action
+      console.log('Purchase button clicked! Simulating redirect to checkout or cart...');
+      
+      const originalText = this.textContent;
+      this.textContent = 'Processing...';
+      this.disabled = true;
+
+      // Simulate a brief delay before "completing" the action
+      setTimeout(() => {
+        this.textContent = 'Purchase Simulated!';
         
-        // Hide after 5 seconds
+        // Reset button text after 3 seconds 
         setTimeout(() => {
-            msgBox.className = '';
-        }, 5000);
-    }
-    
-    // Main Braintree Setup Logic
-    async function setupBraintree() {
-      try {
-        // 1. Get Client Token from an imaginary backend
-        const response = await fetch("/api/generate_token");
-        
-        // NOTE: Since this is frontend only, we simulate a token failure 
-        // as the actual API endpoint does not exist here.
-        // A real implementation would parse the data.
-        const data = { clientToken: "sandbox_token_xxxxxxxx_xxxxxxxx" }; // Mock token for local testing
+          this.textContent = originalText;
+          this.disabled = false;
+        }, 3000);
 
-        if (!data.clientToken) {
-          console.error("No client token received:", data);
-          showStatus("Failed to connect to payment server. Please try again later.", 'error');
-          return;
-        }
-
-        // 2. Initialize Braintree Drop-in UI
-        braintree.dropin.create({
-          authorization: data.clientToken,
-          container: "#dropin-container",
-          // optional features can be enabled here (e.g., PayPal, Google Pay)
-        }, function (createErr, instance) {
-          if (createErr) {
-            console.error("Braintree setup error:", createErr);
-            showStatus("Error setting up payment form. Check console.", 'error');
-            return;
-          }
-
-          const button = document.getElementById("submit-button");
-          button.addEventListener("click", () => {
-            button.textContent = "Processing...";
-            button.disabled = true;
-
-            // 3. Request Payment Method Nonce
-            instance.requestPaymentMethod(async (err, payload) => {
-              button.textContent = "Buy Now";
-              button.disabled = false;
-                
-              if (err) {
-                console.error("Payment method error:", err);
-                showStatus("Payment error. Please check your details.", 'error');
-                return;
-              }
-
-              console.log("Payment Nonce:", payload.nonce);
-              showStatus(`Payment initiated! Nonce ready: ${payload.nonce.substring(0, 10)}...`, 'success');
-              
-              // ⚠️ In a live app, you would now send this nonce to your server 
-              // for transaction processing:
-              /*
-              const checkoutResponse = await fetch("/api/process_payment", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ 
-                  nonce: payload.nonce, 
-                  amount: 89.99,
-                  product_id: "PREMIUM-LEATHER-SHOE-001"
-                })
-              });
-              */
-            });
-          });
-        });
-      } catch (error) {
-        console.error("Error setting up Braintree:", error);
-        showStatus("Setup failed — check console for details.", 'error');
-      }
-    }
-
-    setupBraintree();
+      }, 1000);
+    });
   </script>
 
 </body>
