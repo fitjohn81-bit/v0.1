@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elite Footwear Emporium - Step into Style</title>
+    <!-- Using Google Fonts for a professional look -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>   
+    <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -39,7 +40,10 @@
             color: #3498db; /* Bright blue for hover */
         }
         .hero {
-            background: url('https://via.placeholder.com/1500x500/34495e/ecf0f1?text=Elevate+Your+Style') no-repeat center center/cover;
+            /* === IMAGE PATH UPDATED === */
+            /* This now points to your local 'public/' folder. */
+            /* You can name your hero image 'hero.jpeg' or change this path. */
+            background: url('public/shoe.jpeg') no-repeat center center/cover;
             color: #ecf0f1;
             text-align: center;
             padding: 100px 20px;
@@ -105,7 +109,7 @@
         .product-card img {
             width: 100%;
             height: 250px;
-            object-fit: cover;
+            object-fit: cover; /* This ensures the image covers the area without distortion */
             border-bottom: 1px solid #eee;
         }
         .product-info {
@@ -183,8 +187,10 @@
 
         <div class="product-grid">
 
-            <!-- Product 1: Men's Classic Suede Loafers --><div class="product-card">
-                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Furbantreks.co.ke%2Fofficial-shoes%3Fsrsltid%3DAfmBOoplnu-JhbhPWPflyoskDI23HSmLbiT2eZf3OXMVXm9h8c0py5LM&psig=AOvVaw0IA2ZjxB0_FjnVN3JZ8sL2&ust=1761499768565000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJjciZPwv5ADFQAAAAAdAAAAABAE" alt="Men's Classic Suede Loafers">
+            <!-- Product 1: Suede Loafers -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image1.jpeg" alt="Men's Classic Suede Loafers">
                 <div class="product-info">
                     <h3>Classic Suede Loafers</h3>
                     <p class="category">Men's Casual</p>
@@ -193,8 +199,10 @@
                 </div>
             </div>
 
-            <!-- Product 2: Women's Elegant Leather Heels --><div class="product-card">
-                <img src="https://via.placeholder.com/400x300/a1887f/ffffff?text=Leather+Heels" alt="Women's Elegant Leather Heels">
+            <!-- Product 2: Leather Heels -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image2.jpeg" alt="Women's Elegant Leather Heels">
                 <div class="product-info">
                     <h3>Elegant Leather Heels</h3>
                     <p class="category">Women's Formal</p>
@@ -203,8 +211,10 @@
                 </div>
             </div>
 
-            <!-- Product 3: Men's Premium Oxford Shoes --><div class="product-card">
-                <img src="https://via.placeholder.com/400x300/546e7a/ffffff?text=Oxford+Shoes" alt="Men's Premium Oxford Shoes">
+            <!-- Product 3: Oxford Shoes -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image3.jpeg" alt="Men's Premium Oxford Shoes">
                 <div class="product-info">
                     <h3>Premium Oxford Shoes</h3>
                     <p class="category">Men's Formal</p>
@@ -213,8 +223,10 @@
                 </div>
             </div>
 
-            <!-- Product 4: Unisex Athletic Running Shoes --><div class="product-card">
-                <img src="https://via.placeholder.com/400x300/42a5f5/ffffff?text=Running+Shoes" alt="Unisex Athletic Running Shoes">
+            <!-- Product 4: Running Shoes -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image4.jpeg" alt="Unisex Athletic Running Shoes">
                 <div class="product-info">
                     <h3>Athletic Running Shoes</h3>
                     <p class="category">Unisex Sport</p>
@@ -223,8 +235,10 @@
                 </div>
             </div>
 
-            <!-- Product 5: Women's Suede Ankle Boots --><div class="product-card">
-                <img src="https://via.placeholder.com/400x300/795548/ffffff?text=Ankle+Boots" alt="Women's Suede Ankle Boots">
+            <!-- Product 5: Ankle Boots -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image5.jpeg" alt="Women's Suede Ankle Boots">
                 <div class="product-info">
                     <h3>Suede Ankle Boots</h3>
                     <p class="category">Women's Casual</p>
@@ -233,8 +247,10 @@
                 </div>
             </div>
 
-            <!-- Product 6: Men's Desert Boots --><div class="product-card">
-                <img src="https://via.placeholder.com/400x300/bcaaa4/ffffff?text=Desert+Boots" alt="Men's Desert Boots">
+            <!-- Product 6: Desert Boots -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image6.jpeg" alt="Men's Desert Boots">
                 <div class="product-info">
                     <h3>Rugged Desert Boots</h3>
                     <p class="category">Men's Everyday</p>
@@ -243,8 +259,10 @@
                 </div>
             </div>
 
-            <!-- Product 7: Women's Ballet Flats --><div class="product-card">
-                <img src="https://via.placeholder.com/400x300/ef9a9a/ffffff?text=Ballet+Flats" alt="Women's Ballet Flats">
+            <!-- Product 7: Ballet Flats -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image7.jpeg" alt="Women's Ballet Flats">
                 <div class="product-info">
                     <h3>Chic Ballet Flats</h3>
                     <p class="category">Women's Comfort</p>
@@ -253,8 +271,10 @@
                 </div>
             </div>
 
-            <!-- Product 8: Men's Leather Boat Shoes --><div class="product-card">
-                <img src="https://via.placeholder.com/400x300/66bb6a/ffffff?text=Boat+Shoes" alt="Men's Leather Boat Shoes">
+            <!-- Product 8: Boat Shoes -->
+            <div class="product-card">
+                <!-- === IMAGE PATH UPDATED === -->
+                <img src="public/image8.jpeg" alt="Men's Leather Boat Shoes">
                 <div class="product-info">
                     <h3>Classic Leather Boat Shoes</h3>
                     <p class="category">Men's Summer</p>
@@ -263,8 +283,11 @@
                 </div>
             </div>
 
-        </div> <!-- /product-grid --></div> <!-- /container --><footer class="footer">
-        <p>&copy; 2023 Elite Footwear Emporium. All rights reserved.</p>
+        </div> <!-- End of product-grid -->
+    </div> <!-- End of container -->
+
+    <footer class="footer">
+        <p>&copy; 2025 Elite Footwear Emporium. All rights reserved.</p>
         <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
