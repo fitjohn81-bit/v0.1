@@ -1,0 +1,8 @@
+{
+  "name": "one-piece",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "braintree": "^3.24.0"
+  }
+}
