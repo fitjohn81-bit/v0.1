@@ -3,320 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StrideForge | Performance Footwear</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Inter font family -->
+    <title>Elite Footwear Emporium - Step into Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
-            color: #1a1a1a;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .header {
+            background-color: #2c3e50; /* Dark blue/charcoal */
+            color: #ecf0f1; /* Light grey */
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+        }
+        .nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        .nav a:hover {
+            color: #3498db; /* Bright blue for hover */
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1500x500/34495e/ecf0f1?text=Elevate+Your+Style') no-repeat center center/cover;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .btn {
+            background-color: #e67e22; /* Orange */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #d35400; /* Darker orange */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: #2c3e50;
+        }
+        .product-info p.category {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        .product-info p.price {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #e67e22; /* Orange */
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .product-info .add-to-cart {
+            background-color: #3498db; /* Bright blue */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            display: inline-block; /* To allow padding */
+            margin-top: 10px;
+        }
+        .product-info .add-to-cart:hover {
+            background-color: #2980b9; /* Darker blue */
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-extrabold text-gray-900 tracking-wider">
-                        <span class="text-indigo-600">Stride</span>Forge
-                    </a>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">Men</a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">Women</a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">Sale</a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">Our Story</a>
-                </div>
-
-                <!-- Cart/Search Icon (Inline SVG for sleekness) -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <button class="text-gray-600 hover:text-indigo-600 p-2 rounded-full transition duration-150">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </button>
-                    <!-- User Profile Icon -->
-                    <button class="text-gray-600 hover:text-indigo-600 p-2 rounded-full transition duration-150">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu (Hidden by default) -->
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition duration-150">Men</a>
-                <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition duration-150">Women</a>
-                <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition duration-150">Sale</a>
-                <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition duration-150">Our Story</a>
-                <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition duration-150">Cart</a>
-                <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition duration-150">Account</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="relative bg-gray-900 pt-16 md:pt-24 pb-16 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <!-- Text Content -->
-            <div class="md:w-1/2 z-10 text-center md:text-left mb-10 md:mb-0">
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
-                    Forge Your Path.
-                    <span class="block text-indigo-400 mt-2">Maximum Performance.</span>
-                </h1>
-                <p class="mt-4 text-lg text-gray-300 max-w-lg mx-auto md:mx-0">
-                    Engineered for endurance and style. Discover the new collection built on revolutionary sole technology.
-                </p>
-                <div class="mt-8 flex justify-center md:justify-start space-x-4">
-                    <a href="#" class="px-8 py-3 border border-transparent text-base font-medium rounded-xl shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Shop Men's
-                    </a>
-                    <a href="#" class="px-8 py-3 border-2 border-indigo-500 text-base font-medium rounded-xl text-indigo-500 bg-transparent hover:bg-indigo-50 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Shop Women's
-                    </a>
-                </div>
-            </div>
-
-            <!-- Image Content (Placeholder) -->
-            <div class="md:w-1/2 relative flex justify-center md:justify-end">
-                <!-- Using a visually appealing placeholder that suggests a shoe/product -->
-                <div class="w-full max-w-xs md:max-w-md lg:max-w-lg aspect-square bg-gray-800 rounded-full flex items-center justify-center p-6 shadow-2xl animate-pulse-slow">
-                    <img src="https://placehold.co/600x600/3730a3/ffffff?text=NEW+KICK+DROP"
-                         alt="Placeholder for new performance shoe"
-                         class="w-full h-full object-cover rounded-full transform rotate-3 scale-95 transition-transform duration-500"
-                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/4f46e5/ffffff?text=STRIDEFORGE';"
-                    >
-                </div>
-            </div>
-        </div>
+    <header class="header">
+        <h1>Elite Footwear Emporium</h1>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </nav>
     </header>
 
-    <!-- Featured Products Section -->
-    <section class="py-16 sm:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Featured Gear</h2>
-
-            <!-- Product Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-                
-                <!-- Product Card 1: The 'Velocity' Runner -->
-                <div class="bg-gray-100 rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <div class="relative overflow-hidden">
-                        <img src="https://placehold.co/600x400/1e293b/fefefe?text=Velocity+Runner"
-                             alt="Velocity Runner performance shoe"
-                             class="w-full h-64 object-cover transition duration-300 group-hover:scale-105"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/3730a3/ffffff?text=Runner';"
-                        >
-                        <span class="absolute top-4 right-4 bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">New</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Velocity Runner</h3>
-                        <p class="mt-2 text-gray-500 text-sm">Lightweight speed. Perfect for marathon training and daily runs.</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-2xl font-extrabold text-indigo-600">$189.99</span>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-150">
-                                View Details &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 2: The 'Urban Glide' Sneaker -->
-                <div class="bg-gray-100 rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <div class="relative overflow-hidden">
-                        <img src="https://placehold.co/600x400/4b5563/fefefe?text=Urban+Glide+Sneaker"
-                             alt="Urban Glide lifestyle sneaker"
-                             class="w-full h-64 object-cover transition duration-300 group-hover:scale-105"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/4f46e5/ffffff?text=Casual';"
-                        >
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Urban Glide</h3>
-                        <p class="mt-2 text-gray-500 text-sm">Everyday comfort meets clean, modern street style. Sustainable materials.</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-2xl font-extrabold text-indigo-600">$120.00</span>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-150">
-                                View Details &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 3: The 'Apex Trail' Hiker -->
-                <div class="bg-gray-100 rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <div class="relative overflow-hidden">
-                        <img src="https://placehold.co/600x400/334155/fefefe?text=Apex+Trail+Boot"
-                             alt="Apex Trail waterproof hiking boot"
-                             class="w-full h-64 object-cover transition duration-300 group-hover:scale-105"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/3730a3/ffffff?text=Hiker';"
-                        >
-                        <span class="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full">30% Off</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Apex Trail Hiker</h3>
-                        <p class="mt-2 text-gray-500 text-sm">Waterproof protection and aggressive grip for any terrain.</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-xl font-extrabold text-gray-400 line-through mr-2">$175.00</span>
-                            <span class="text-2xl font-extrabold text-red-600">$122.50</span>
-                        </div>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-150 mt-4 block text-right">
-                            View Details &rarr;
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- View All Button -->
-            <div class="mt-16 text-center">
-                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-700 transition duration-300 shadow-md">
-                    Explore Our Full Range
-                    <svg class="ml-3 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
+    <section class="hero">
+        <h2>Elevate Your Style, One Step at a Time</h2>
+        <p>Discover our exclusive collection of premium footwear, crafted for comfort, durability, and timeless elegance.</p>
+        <a href="#" class="btn">Explore Collection</a>
     </section>
 
-    <!-- Call to Action / Sustainability Banner -->
-    <div class="bg-indigo-600 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-extrabold text-white sm:text-5xl">
-                The StrideForge Promise
-            </h2>
-            <p class="mt-4 text-xl text-indigo-200">
-                100% Recycled materials in every Velocity Runner. Performance doesn't cost the Earth.
-            </p>
-            <a href="#" class="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-indigo-600 bg-white hover:bg-indigo-50 transition duration-300 shadow-lg">
-                Learn About Our Impact
-            </a>
-        </div>
-    </div>
+    <div class="container">
+        <h2 class="section-title">Our Featured Collection</h2>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                <!-- Brand Info -->
-                <div class="col-span-2 md:col-span-1">
-                    <h3 class="text-2xl font-extrabold text-white tracking-wider mb-4">
-                        <span class="text-indigo-400">Stride</span>Forge
-                    </h3>
-                    <p class="text-sm text-gray-400">&copy; 2025 StrideForge, Inc.</p>
-                    <p class="text-sm text-gray-400">All rights reserved.</p>
-                </div>
+        <div class="product-grid">
 
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-indigo-400">Shop</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">New Arrivals</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Running</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Lifestyle</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Sale</a></li>
-                    </ul>
-                </div>
-
-                <!-- Customer Service -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-indigo-400">Support</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Shipping & Returns</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">FAQ</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Size Guide</a></li>
-                    </ul>
-                </div>
-
-                <!-- Legal -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-indigo-400">Company</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Our Story</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Sustainability</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Terms of Use</a></li>
-                    </ul>
-                </div>
-
-                <!-- Social Media (SVG icons) -->
-                <div class="col-span-2 md:col-span-1">
-                    <h4 class="text-lg font-semibold mb-4 text-indigo-400">Connect</h4>
-                    <div class="flex space-x-4">
-                        <!-- Twitter -->
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-150" aria-label="Twitter">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.799-1.574 2.167-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.39 0-6.142 2.752-6.142 6.142 0 .482.054.95.147 1.398-5.106-.254-9.624-2.693-12.658-6.386-.531.913-.836 1.968-.836 3.08 0 2.13 1.082 4.015 2.73 5.115-.8-.024-1.555-.247-2.204-.608v.075c0 2.986 2.126 5.488 4.952 6.059-.517.141-1.066.216-1.635.216-.401 0-.793-.039-1.173-.11 0 2.454 1.874 4.49 4.363 4.945-2.062 1.616-4.664 2.576-7.49 2.576-.486 0-.965-.029-1.432-.084 2.752 1.767 6.012 2.802 9.53 2.802 11.436 0 17.653-9.48 17.653-17.653 0-.272-.006-.543-.017-.812.827-.597 1.545-1.348 2.115-2.204z"/></svg>
-                        </a>
-                        <!-- Instagram -->
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-150" aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.25.148 4.771 1.581 4.98 4.851.058 1.271.071 1.652.071 4.851s-.013 3.583-.071 4.85c-.148 3.25-1.581 4.771-4.851 4.98-.12.058-.499.071-4.85.071s-3.583-.013-4.85-.071c-3.25-.149-4.771-1.581-4.98-4.85-.058-1.271-.071-1.652-.071-4.85s.013-3.583.071-4.85c.149-3.25 1.581-4.771 4.85-4.98.12-.058.499-.071 4.85-.071zm0-2.163c-3.259 0-3.668.014-4.94.072-4.357.2-6.78 2.651-6.989 6.989-.059 1.271-.073 1.668-.073 4.94s.014 3.668.072 4.94c.2 4.357 2.651 6.78 6.989 6.989 1.271.058 1.668.073 4.94.073s3.668-.014 4.94-.072c4.357-.2 6.78-2.651 6.989-6.989.058-1.271.073-1.668.073-4.94s-.014-3.668-.072-4.94c-.2-4.357-2.651-6.78-6.989-6.989-1.271-.058-1.668-.073-4.94-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.545-12.727a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
-                        </a>
-                        <!-- Facebook -->
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-150" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                        </a>
-                    </div>
+            <!-- Product 1: Men's Classic Suede Loafers --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/8d6e63/ffffff?text=Suede+Loafers" alt="Men's Classic Suede Loafers">
+                <div class="product-info">
+                    <h3>Classic Suede Loafers</h3>
+                    <p class="category">Men's Casual</p>
+                    <p class="price">$129.99</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
                 </div>
             </div>
 
-            <!-- Bottom Note -->
-            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
-                <p class="text-xs text-gray-500">
-                    *The StrideForge logo and all product names are fictional and are used for demonstration purposes only.
-                </p>
+            <!-- Product 2: Women's Elegant Leather Heels --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/a1887f/ffffff?text=Leather+Heels" alt="Women's Elegant Leather Heels">
+                <div class="product-info">
+                    <h3>Elegant Leather Heels</h3>
+                    <p class="category">Women's Formal</p>
+                    <p class="price">$149.99</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
             </div>
-        </div>
+
+            <!-- Product 3: Men's Premium Oxford Shoes --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/546e7a/ffffff?text=Oxford+Shoes" alt="Men's Premium Oxford Shoes">
+                <div class="product-info">
+                    <h3>Premium Oxford Shoes</h3>
+                    <p class="category">Men's Formal</p>
+                    <p class="price">$189.00</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 4: Unisex Athletic Running Shoes --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/42a5f5/ffffff?text=Running+Shoes" alt="Unisex Athletic Running Shoes">
+                <div class="product-info">
+                    <h3>Athletic Running Shoes</h3>
+                    <p class="category">Unisex Sport</p>
+                    <p class="price">$99.50</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 5: Women's Suede Ankle Boots --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/795548/ffffff?text=Ankle+Boots" alt="Women's Suede Ankle Boots">
+                <div class="product-info">
+                    <h3>Suede Ankle Boots</h3>
+                    <p class="category">Women's Casual</p>
+                    <p class="price">$115.00</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 6: Men's Desert Boots --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/bcaaa4/ffffff?text=Desert+Boots" alt="Men's Desert Boots">
+                <div class="product-info">
+                    <h3>Rugged Desert Boots</h3>
+                    <p class="category">Men's Everyday</p>
+                    <p class="price">$89.99</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 7: Women's Ballet Flats --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/ef9a9a/ffffff?text=Ballet+Flats" alt="Women's Ballet Flats">
+                <div class="product-info">
+                    <h3>Chic Ballet Flats</h3>
+                    <p class="category">Women's Comfort</p>
+                    <p class="price">$65.00</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Product 8: Men's Leather Boat Shoes --><div class="product-card">
+                <img src="https://via.placeholder.com/400x300/66bb6a/ffffff?text=Boat+Shoes" alt="Men's Leather Boat Shoes">
+                <div class="product-info">
+                    <h3>Classic Leather Boat Shoes</h3>
+                    <p class="category">Men's Summer</p>
+                    <p class="price">$105.00</p>
+                    <a href="#" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+
+        </div> <!-- /product-grid --></div> <!-- /container --><footer class="footer">
+        <p>&copy; 2023 Elite Footwear Emporium. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu Toggle -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuButton = document.getElementById('menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            // Find the SVG icons inside the button
-            const openIcon = menuButton.querySelector('.block');
-            const closeIcon = menuButton.querySelector('.hidden');
-
-            menuButton.addEventListener('click', () => {
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-                
-                // Toggle the 'aria-expanded' attribute
-                menuButton.setAttribute('aria-expanded', !isExpanded);
-
-                // Toggle the visibility of the mobile menu
-                mobileMenu.classList.toggle('hidden');
-
-                // Toggle the visibility of the icons
-                openIcon.classList.toggle('hidden');
-                closeIcon.classList.toggle('hidden');
-            });
-        });
-    </script>
 </body>
 </html>
