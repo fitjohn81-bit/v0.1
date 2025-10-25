@@ -88,12 +88,12 @@
       text-align: left;
     }
 
-    /* Image Display Area - NOW USING A RELIABLE PLACEHOLDER */
+    /* Image Display Area - NOW USING THE REQUESTED LOCAL PATH */
     .shoe-image {
       width: 100%;
       min-height: 350px; 
-      /* Replaced Unsplash link with a reliable placeholder service */
-      background: url('https://placehold.co/800x450/1c1f26/d4af37?text=PREMIUM+SHOE+IMAGE') center/cover no-repeat;
+      /* DIRECTLY USING THE LOCAL PATH AS REQUESTED */
+      background: url('/shoe.jpeg') center/cover no-repeat;
       border-radius: 8px;
       margin-bottom: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -216,8 +216,8 @@
 
   <div class="product-checkout-container">
     <section class="product-details">
-      <!-- The shoe-image class now uses a reliable external image URL -->
-      <div class="shoe-image" role="img" aria-label="A placeholder for a premium black leather official shoe."></div>
+      <!-- The shoe-image class uses the local path /shoe.jpeg -->
+      <div class="shoe-image" role="img" aria-label="A pair of premium black leather official shoes."></div>
       
       <h3>Men’s Premium Leather Shoes</h3>
       <p>Crafted from the finest Italian leather, these shoes redefine elegance and durability — perfect for professionals, weddings, and business meetings.</p>
