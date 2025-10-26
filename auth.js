@@ -1,7 +1,7 @@
 // Function to get client token from your server
 async function getClientToken() {
   try {
-    const response = await fetch('https://api.chomba.tech/client_token', {  // Your public endpoint
+    const response = await fetch('https://7e6cd78b290c.ngrok-free.app/client_token', {  // Your public endpoint
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });
